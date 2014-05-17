@@ -52,7 +52,8 @@ Buffer 的相关配置
 2. 命令 :NERDTreeClose 用于关闭 NERD Tree
 3. 命令 :NERDFind 用于在 NERD Tree 中查找当前 Buffer 对应的文件
 
-在 NERD Tree 窗口中，我们有一些命令可以使用：  
+在 NERD Tree 窗口中，我们有一些命令可以使用：
+
 1. o 命令用于打开文件或者目录
 2. go 命令用于打开文件或者目录，但光标并不跳转到打开的 Buffer 中去
 3. x 命令用于关闭选中节点的父目录
