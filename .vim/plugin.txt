@@ -1,13 +1,13 @@
-Plugin						Update
+Plugin                      Update
 --------------------------------------
-FuzzyFinder					2012/9/25
-L9							2012/10/22
-NERD_commenter				2012/9/25
-snipMate					2012/9/25
-matchit						2012/9/25
-ZenCoding					2012/10/6
-A							2012/10/9
-bufexplorer					2012/10/21
-Vim bookmark				2012/11/4
-NERD Tree					2012/12/10
-vim-markdown				2014/5/18
+FuzzyFinder                 2012/9/25
+L9                          2012/10/22
+NERD_commenter              2012/9/25
+snipMate                    2012/9/25
+matchit                     2012/9/25
+ZenCoding                   2012/10/6
+A                           2012/10/9
+bufexplorer                 2012/10/21
+Vim bookmark                2012/11/4
+NERD Tree                   2012/12/10
+vim-markdown                2014/5/18
