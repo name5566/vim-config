@@ -10,4 +10,4 @@ A							2012/10/9
 bufexplorer					2012/10/21
 Vim bookmark				2012/11/4
 NERD Tree					2012/12/10
-vim-markdown				2014/5/19
+vim-markdown				2014/5/18
