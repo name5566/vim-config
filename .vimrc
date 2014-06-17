@@ -174,7 +174,12 @@ cno $w \<\><left><left>
 cno $c \<\>\C<left><left><left><left>
 
 " Fast searching
-let s:cppfile = '**/*.c **/*.cpp **/*.cxx **/*.cc **/*.h **/*.hpp **/*.hxx **/*.hh **/*.inl **/*.inc'
-exec 'map <leader>vi :vim //j ' . s:cppfile . '<HOME><right><right><right><right><right>'
-exec 'map <leader>vs :vim /\C/j ' . s:cppfile . '<HOME><right><right><right><right><right>'
-exec 'map <leader>vws :vim /\<\>\C/j ' . s:cppfile . '<HOME><right><right><right><right><right><right><right>'
+function! s:vimgrepHelper(m, f)
+	exec 'map <leader>' . a:m . 'i :vim //j ' . a:f . '<HOME><right><right><right><right><right>'
+	exec 'map <leader>' . a:m . 's :vim /\C/j ' . a:f . '<HOME><right><right><right><right><right>'
+	exec 'map <leader>' . a:m . 'ws :vim /\<\>\C/j ' . a:f . '<HOME><right><right><right><right><right><right><right>'
+endfunction
+
+call s:vimgrepHelper('v', '**/*.c **/*.cpp **/*.cxx **/*.cc **/*.h **/*.hpp **/*.hxx **/*.hh **/*.inl **/*.inc')
+call s:vimgrepHelper('j', '**/*.js')
+call s:vimgrepHelper('t', '**/*.txt')
