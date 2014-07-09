@@ -183,3 +183,4 @@ endfunction
 call s:vimgrepHelper('v', '**/*.c **/*.cpp **/*.cxx **/*.cc **/*.h **/*.hpp **/*.hxx **/*.hh **/*.inl **/*.inc')
 call s:vimgrepHelper('j', '**/*.js')
 call s:vimgrepHelper('t', '**/*.txt')
+call s:vimgrepHelper('l', '**/*.lua')
