@@ -200,3 +200,4 @@ call s:vimgrepHelper('v', '**/*.c **/*.cpp **/*.cxx **/*.cc **/*.h **/*.hpp **/*
 call s:vimgrepHelper('j', '**/*.js')
 call s:vimgrepHelper('t', '**/*.txt')
 call s:vimgrepHelper('l', '**/*.lua')
+call s:vimgrepHelper('g', '**/*.go')
