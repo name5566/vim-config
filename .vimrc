@@ -164,6 +164,22 @@ let g:vbookmark_bookmarkSaveFile = $HOME . '/.vimbookmark'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Go
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clear filetype flags before changing runtimepath to force Vim to reload them
+if exists("g:did_load_filetypes")
+	filetype off
+	filetype plugin indent off
+endif
+" replace $GOROOT with the output of: go env GOROOT
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
+syntax on
+" gofmt Go source files when they are saved
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mutable
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set font
