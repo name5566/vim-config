@@ -15,7 +15,7 @@ set cpo&vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! s:Tab2Space()
 	set expandtab
-	%retab!
+	retab!
 endfunction
 
 if !exists(':Tab2Space')
@@ -24,7 +24,7 @@ endif
 
 function! s:Space2Tab()
 	set noexpandtab
-	%retab!
+	retab!
 endfunction
 
 if !exists(':Space2Tab')
