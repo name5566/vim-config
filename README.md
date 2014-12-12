@@ -31,7 +31,7 @@ Buffer 的相关配置
 2. Ctrl + k 光标移到上边的 Buffer 中去
 3. Ctrl + h 光标移到左边的 Buffer 中去
 4. Ctrl + l 光标移到右边的 Buffer 中去
-5. `<leader>be` 用于打开一个 Buffer 列表（通过插件 [Buffer Explorer](http://www.vim.org/scripts/script.php?script_id=42) 实现）
+5. `<leader>be` 用于打开一个 Buffer 列表（通过插件 [bufexplorer](https://github.com/jlanzarotta/bufexplorer) 实现）
 
 命令行相关配置（例如，支持 Bash 风格的按键）
 -------------------------------------------
@@ -42,11 +42,11 @@ Buffer 的相关配置
 5. $w 快速键入 `\<\>`，常用于在查找时匹配一个完整的单词（不区分大小写）
 6. $c 快速键入 `\<\>\C`，常用于在查找时匹配一个完整的单词（区分大小写）
 
-注释的支持（通过插件 [NERD_commenter](http://www.vim.org/scripts/script.php?script_id=1218) 实现）
+注释的支持（通过插件 [nerdcommenter](https://github.com/scrooloose/nerdcommenter) 实现）
 -------------------------------------------
 使用 Alt + \ 设置或者清除注释
 
-目录文件列表的支持（通过插件 [NERD Tree](http://www.vim.org/scripts/script.php?script_id=1658) 实现）
+目录文件列表的支持（通过插件 [nerdtree](https://github.com/scrooloose/nerdtree) 实现）
 -------------------------------------------
 1. 命令 :NERDTree 用于打开 NERD Tree
 2. 命令 :NERDTreeClose 用于关闭 NERD Tree
@@ -72,7 +72,7 @@ Buffer 的相关配置
 1. F4 用于在当前 Buffer 所在的目录中查找
 2. F5 用于在当前工作目录中查找
 
-书签（Bookmark or mark）支持（这里自己实现了一个插件 [Vim bookmark](http://www.vim.org/scripts/script.php?script_id=4299)）
+书签（Bookmark or mark）支持（这里自己实现了一个插件 [vim-bookmark](https://github.com/name5566/vim-bookmark)）
 -------------------------------------------
 1. mm 用于设定或者删除一个书签
 2. mn 用于跳转到下一个书签
@@ -80,13 +80,9 @@ Buffer 的相关配置
 4. ma 用于删除所有书签
 5. 书签组功能：[https://github.com/name5566/vim-bookmark](https://github.com/name5566/vim-bookmark)
 
-代码片段的支持（通过插件 [snipMate](http://www.vim.org/scripts/script.php?script_id=2540) 实现）
--------------------------------------------
-具体的片段可以参考 .vim/snippets 中的文件
-
-ZenCoding 支持（通过插件 [ZenCoding](http://www.vim.org/scripts/script.php?script_id=2981) 实现）
--------------------------------------------
-如果你还不了解 ZenCoding，那么可以参考：[http://code.google.com/p/zen-coding/](http://code.google.com/p/zen-coding/)
+[Emmet](https://github.com/mattn/emmet-vim)
+-------
+具体内容参考：[http://emmet.io/](http://emmet.io/)
 
 C++ 编码相关支持
 ----------------

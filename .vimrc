@@ -1,8 +1,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=300
+" Install plugins and runtime files in their own private directories
+execute pathogen#infect()
+
+" Sets how many command-lines of history VIM has to remember
+set history=500
 
 " Enable filetype plugin
 filetype plugin on
@@ -57,7 +60,7 @@ set t_vb=
 " Number
 set number
 
-" Turn backup off, since most stuff is in SVN, git anyway...
+" Turn backup off
 set nobackup
 set nowb
 set noswapfile
@@ -145,7 +148,7 @@ nnoremap <silent> <F5> :FufFile<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NERD_commenter
+" => nerdcommenter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <A-/> ,c<space>
 
