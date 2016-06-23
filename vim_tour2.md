@@ -192,18 +192,18 @@ vim[grep][!] /{pattern}/[g][j] {file} ...
 使用当前文件中的或者包含文件中的定义（或者宏）的名字进行补全
 * CTRL-N 或者 CTRL-P（N 的含义为搜索下一个，P 的含义为搜索前一个）
 关键词补全，在何处查找关键词，取决于 complete 选项的设置。complete 的值可以为（这里未全部列举）：  
-1. . 表示搜索当前的 buffer
-2. w 表示搜索其他窗口的 buffer
-3. b 表示搜索其他的被载入的 buffers（在 buffer list 中）
-4. u 表示搜索未被载入的 buffers（在 buffer list 中）
-5. U 表示搜索 buffers（不在 buffer list 中）
-6. k 表示搜索由 dictionary 选项指定的文件
-7. k{dict} 表示搜索文件 {dict}，例如：set cpt=k/usr/dict/*
-8. s 表示搜索由 thesaurus 选择指定的文件
-9. s{tsr} 表示搜索文件 {tsr}
-10. i 表示搜索当前和包含的文件
-11. d 表示搜索当前和包含的文件中的定义（或者宏）的名字
-12. ] 或者 t 表示 tag 补全
+	1. . 表示搜索当前的 buffer
+	2. w 表示搜索其他窗口的 buffer
+	3. b 表示搜索其他的被载入的 buffers（在 buffer list 中）
+	4. u 表示搜索未被载入的 buffers（在 buffer list 中）
+	5. U 表示搜索 buffers（不在 buffer list 中）
+	6. k 表示搜索由 dictionary 选项指定的文件
+	7. k{dict} 表示搜索文件 {dict}，例如：set cpt=k/usr/dict/*
+	8. s 表示搜索由 thesaurus 选择指定的文件
+	9. s{tsr} 表示搜索文件 {tsr}
+	10. i 表示搜索当前和包含的文件
+	11. d 表示搜索当前和包含的文件中的定义（或者宏）的名字
+	12. ] 或者 t 表示 tag 补全
 
 我们使用 "," 来分隔各个值，默认的情况下，complete 的值为：
 
