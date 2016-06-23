@@ -1,5 +1,4 @@
-参考文献列表：
-
+参考文献列表：  
 [http://vimdoc.sourceforge.net/htmldoc/usr_41.html](http://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 
 本文面向一些有编程经验的人（特别是有 C/C++、Java 等编程经验的人），因此对一些显而易见的知识点未做详细的阐述。
