@@ -249,7 +249,8 @@ let optval = eval('&' . optname)
 
 ### 函数（Functions）
 
-Vim 定义了很多函数，文档在这里：  
+Vim 定义了很多函数，文档在这里：
+
 * [http://vimdoc.sourceforge.net/htmldoc/usr_41.html#function-list](http://vimdoc.sourceforge.net/htmldoc/usr_41.html#function-list)
 * [http://vimdoc.sourceforge.net/htmldoc/eval.html#functions](http://vimdoc.sourceforge.net/htmldoc/eval.html#functions)
 
