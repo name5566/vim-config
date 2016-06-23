@@ -1,16 +1,16 @@
 vim-config
 ==========
 
-此项目为 [name5566](http://name5566.com) 的 VIM 配置
+此项目为 Name5566 的 VIM 配置
 
-本文只描述此 VIM 配置的特有部分，其他的相关内容可以参阅手册，下面几篇是 [name5566](http://name5566.com) 的 VIM 学习笔记：
-* [VIM 编辑器的使用（1）](http://name5566.com/3400.html)
-* [VIM 编辑器的使用（2）](http://name5566.com/3402.html)
-* [VIM 脚本语言](http://name5566.com/4065.html)
+本文只描述此 VIM 配置的特有部分，其他的相关内容可以参阅手册，下面几篇是 Name5566 的 VIM 学习笔记：
+* [VIM 编辑器的使用（1）](https://github.com/name5566/vim-config/blob/master/vim_tour1.md)
+* [VIM 编辑器的使用（2）](https://github.com/name5566/vim-config/blob/master/vim_tour2.md)
+* [VIM 脚本语言](https://github.com/name5566/vim-config/blob/master/vim_script.md)
 
 此配置在 VIM 7.2、7.3、7.4 下测试过。
 
-![配置展示](http://name5566.com/wp-content/uploads/2012/09/vim.png)
+![配置展示](https://github.com/name5566/vim-config/blob/master/vim.png)
 
 基本的配置
 ----------
