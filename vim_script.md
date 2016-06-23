@@ -1,4 +1,5 @@
 参考文献列表：
+
 [http://vimdoc.sourceforge.net/htmldoc/usr_41.html](http://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 
 本文面向一些有编程经验的人（特别是有 C/C++、Java 等编程经验的人），因此对一些显而易见的知识点未做详细的阐述。
@@ -45,8 +46,7 @@
 1. 定义一个全局变量 var 其可以在任何地方使用：
 
 	let var = 1
-	# 或者这样写
-	let g:var = 1
+	let g:var = 1 # 或者这样写
 
 2. 定义一个局部变量 var 其只能在某个脚本文件中使用：
 
