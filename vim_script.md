@@ -35,17 +35,17 @@ count is 4
 
 1. let 命令用于变量的赋值，通常的形式为：
 
-```
-let {variable} = {expression}
-```
+	```
+	let {variable} = {expression}
+	```
 
 2. while 命令和 endwhile 命令总是配合在一起使用，通常的形式为：
 
-```
-while {condition}
-	{statements}
-endwhile
-```
+	```
+	while {condition}
+		{statements}
+	endwhile
+	```
 
 3. echo 命令用于打印其参数，此例子中 echo 命令有两个参数，字符串 "count is" 和变量 i
 
@@ -55,29 +55,29 @@ endwhile
 
 1. 定义一个全局变量 var 其可以在任何地方使用：
 
-```
-let var = 1
-# 或者这样写
-let g:var = 1
-```
+	```
+	let var = 1
+	# 或者这样写
+	let g:var = 1
+	```
 
 2. 定义一个局部变量 var 其只能在某个脚本文件中使用：
 
-```
-let s:var = 1
-```
+	```
+	let s:var = 1
+	```
 
 3. 定义一个变量 var 其只能在某个 buffer 中使用：
 
-```
-let b:var = 1
-```
+	```
+	let b:var = 1
+	```
 
 4. 定义一个变量 var 其只能在某个 window 中使用：
 
-```
-let w:var = 1
-```
+	```
+	let w:var = 1
+	```
 
 另外，还有一类变量 v:name 其为 Vim 预先定义的变量。如果需要删除一个变量，使用 unlet 命令，例如删除 s:var 变量：
 
