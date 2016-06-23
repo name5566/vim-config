@@ -183,14 +183,14 @@ endif
 1. 在操作符后添加 # 表示不忽略大小写
 2. 在操作符后添加 ? 表示忽略大小写
 
-	```
-	if 'hello' ==? 'Hello'
-		echo 'Here 1'
-	endif
-	if 'hello' ==# 'Hello'
-		echo 'Here 2'
-	endif
-	```
+```
+if 'hello' ==? 'Hello'
+	echo 'Here 1'
+endif
+if 'hello' ==# 'Hello'
+	echo 'Here 2'
+endif
+```
 
 以上脚本输出 Here 1
 
