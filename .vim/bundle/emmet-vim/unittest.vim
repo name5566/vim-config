@@ -2,28 +2,28 @@
 let s:sfile = expand('<sfile>')
 
 function! s:reload(d)
-  exe "so" a:d."/plugin/emmet.vim"
+  exe 'so' a:d.'/plugin/emmet.vim'
   for f in split(globpath(a:d, 'autoload/**/*.vim'), "\n")
-    silent! exe "so" f
+    silent! exe 'so' f
   endfor
 endfunction
 
 function! s:show_type(type)
-  echohl Search | echon "[" a:type "]\n" | echohl None
+  echohl Search | echon '[' a:type "]\n" | echohl None
   echo "\r"
 endfunction
 
 function! s:show_category(category)
-  echohl MatchParen | echon "[" a:category "]\n" | echohl None
+  echohl MatchParen | echon '[' a:category "]\n" | echohl None
   echo "\r"
 endfunction
 
 function! s:show_pass(pass)
-  echohl Title | echo "pass".a:pass."\n" | echohl None
+  echohl Title | echo 'pass'.a:pass."\n" | echohl None
 endfunction
 
 function! s:show_done()
-  echohl IncSearch | echo "done" | echohl None
+  echohl IncSearch | echo 'done' | echohl None
 endfunction
 
 function! s:escape(str)
@@ -36,43 +36,43 @@ endfunction
 function! s:show_title(no, title)
   let title = s:escape(a:title)
   let width = &columns - 23
-  echohl MoreMsg | echon "\rtesting #".printf("%03d", a:no)
-  echohl None | echon ": " . (len(title) < width ? (title.repeat(' ', width-len(title))) : strpart(title, 0, width)) . ' ... '
+  echohl MoreMsg | echon "\rtesting #".printf('%03d', a:no)
+  echohl None | echon ': ' . (len(title) < width ? (title.repeat(' ', width-len(title))) : strpart(title, 0, width)) . ' ... '
 endfunction
 
 function! s:show_skip(no, title)
   let title = s:escape(a:title)
   let width = &columns - 23
-  echohl WarningMsg | echon "\rskipped #".printf("%03d", a:no)
-  echohl None | echon ": " . (len(title) < width ? (title.repeat(' ', width-len(title))) : strpart(title, 0, width)) . ' ... '
-  echo ""
+  echohl WarningMsg | echon "\rskipped #".printf('%03d', a:no)
+  echohl None | echon ': ' . (len(title) < width ? (title.repeat(' ', width-len(title))) : strpart(title, 0, width)) . ' ... '
+  echo ''
 endfunction
 
 function! s:show_ok()
   echohl Title | echon "ok\n" | echohl None
-  echo ""
+  echo ''
 endfunction
 
 function! s:show_ng(no, expect, got)
   echohl WarningMsg | echon "ng\n" | echohl None
-  echohl ErrorMsg | echo "failed test #".a:no | echohl None
+  echohl ErrorMsg | echo 'failed test #'.a:no | echohl None
   set more
-  echohl WarningMsg | echo printf("expect(%d):", len(a:expect)) | echohl None
+  echohl WarningMsg | echo printf('expect(%d):', len(a:expect)) | echohl None
   echo join(split(a:expect, "\n", 1), "|\n")
-  echohl WarningMsg | echo printf("got(%d):", len(a:got)) | echohl None
+  echohl WarningMsg | echo printf('got(%d):', len(a:got)) | echohl None
   echo join(split(a:got, "\n", 1), "|\n")
   let cs = split(a:expect, '\zs')
   for c in range(len(cs))
     if c < len(a:got)
       if a:expect[c] != a:got[c]
-        echohl WarningMsg | echo "differ at:" | echohl None
+        echohl WarningMsg | echo 'differ at:' | echohl None
         echo a:expect[c :-1]
         break
       endif
     endif
   endfor
-  echo ""
-  throw "stop"
+  echo ''
+  throw 'stop'
 endfunction
 
 function! s:test(...)
@@ -91,6 +91,7 @@ function! s:test(...)
       let start = reltime()
       for n in range(len(tests))
         if len(index) > 0 && n != index | continue | endif
+        if has_key(tests[n], 'ignore') && tests[n].ignore | continue | endif
         let query = tests[n].query
         let options = has_key(tests[n], 'options') ? tests[n].options : {}
         let result = tests[n].result
@@ -107,7 +108,7 @@ function! s:test(...)
         endfor
         if stridx(query, '$$$$') != -1
           silent! 1new
-          silent! exe "setlocal ft=".testgroup.type
+          silent! exe 'setlocal ft='.testgroup.type
           silent! let key = matchstr(query, '.*\$\$\$\$\zs.*\ze\$\$\$\$')
           if len(key) > 0
             exe printf('let key = "%s"', key)
@@ -159,7 +160,7 @@ function! s:do_tests(...)
     if exists('g:user_emmet_settings')
       let s:old_user_emmet_settings = g:user_emmet_settings
     endif
-    let g:user_emmet_settings = { 'indentation': "\t" }
+    let g:user_emmet_settings = {'variables': {'indentation': "\t", 'use_selection': 1}}
     let oldmore = &more
     call s:reload(fnamemodify(s:sfile, ':h'))
     let &more = 0
@@ -492,6 +493,10 @@ finish
           'result': "<input type=\"input\" value=\"test1\">\n<input type=\"input\" value=\"test2\">\n<input type=\"input\" value=\"test3\">",
         },
         {
+          'query': "test1\ntest2\ntest3$$$$\\<esc>ggVG\\<c-y>,div[id=$#]*\\<cr>$$$$",
+          'result': "<div id=\"test1\"></div>\n<div id=\"test2\"></div>\n<div id=\"test3\"></div>",
+        },
+        {
           'query': "div#id-$*5>div#id2-$",
           'result': "<div id=\"id-1\">\n\t<div id=\"id2-1\"></div>\n</div>\n<div id=\"id-2\">\n\t<div id=\"id2-2\"></div>\n</div>\n<div id=\"id-3\">\n\t<div id=\"id2-3\"></div>\n</div>\n<div id=\"id-4\">\n\t<div id=\"id2-4\"></div>\n</div>\n<div id=\"id-5\">\n\t<div id=\"id2-5\"></div>\n</div>\n",
         },
@@ -531,6 +536,14 @@ finish
           'query': "<small>a$$$$</small>",
           'result': "<small><a href=\"\"></a></small>",
         },
+        {
+          'query': "form.search-form._wide>input.-query-string+input:s.-btn_large|bem",
+          'result': "<form class=\"search-form search-form_wide\" action=\"\">\n\t<input class=\"search-form-query-string\" type=\"\">\n\t<input class=\"search-form-btn_large\" type=\"submit\" value=\"\">\n</form>\n",
+        },
+        {
+          'query': "form>fieldset>legend+(label>input[type=\"checkbox\"])*3",
+          'result': "<form action=\"\">\n\t<fieldset>\n\t\t<legend></legend>\n\t\t<label for=\"\"><input type=\"checkbox\"></label>\n\t\t<label for=\"\"><input type=\"checkbox\"></label>\n\t\t<label for=\"\"><input type=\"checkbox\"></label>\n\t</fieldset>\n</form>\n",
+        },
       ],
     },
     {
@@ -538,7 +551,7 @@ finish
       'tests': [
         {
           'query': "<div>\n\t<span>$$$$\\<c-y>j$$$$</span>\n</div>",
-          'result': "<div>\n\t<span/>\n</div>",
+          'result': "<div>\n\t<span />\n</div>",
         },
         {
           'query': "<div>\n\t<span$$$$\\<c-y>j$$$$/>\n</div>",
@@ -656,11 +669,11 @@ finish
         },
         {
           'query': "{bg+$$$$}",
-          'result': "{background: #FFF url($$$$) 0 0 no-repeat;}",
+          'result': "{background: $$$$#fff url() 0 0 no-repeat;}",
         },
         {
           'query': "{bg+!$$$$}",
-          'result': "{background: #FFF url($$$$) 0 0 no-repeat !important;}",
+          'result': "{background: $$$$#fff url() 0 0 no-repeat !important;}",
         },
         {
           'query': "{m$$$$}",
@@ -712,11 +725,11 @@ finish
         },
         {
           'query': "{(bg+)+c$$$$}",
-          'result': "{background: #FFF url($$$$) 0 0 no-repeat;\ncolor: #000;}",
+          'result': "{background: $$$$#fff url() 0 0 no-repeat;\ncolor: #000;}",
         },
         {
           'query': "{m0+bgi+bg++p0$$$$}",
-          'result': "{margin: 0;\nbackground-image: url($$$$);\nbackground: #FFF url() 0 0 no-repeat;\npadding: 0;}",
+          'result': "{margin: 0;\nbackground-image: url($$$$);\nbackground: #fff url() 0 0 no-repeat;\npadding: 0;}",
         },
         {
           'query': "{borle$$$$}",
@@ -733,6 +746,30 @@ finish
         {
           'query': "{dn$$$$}",
           'result': "{display: none;}",
+        },
+        {
+          'query': "{p10%$$$$}",
+          'result': "{padding: 10%;}",
+        },
+        {
+          'query': "{p10p$$$$}",
+          'result': "{padding: 10%;}",
+        },
+        {
+          'query': "{p10e$$$$}",
+          'result': "{padding: 10em;}",
+        },
+        {
+          'query': "{p10em$$$$}",
+          'result': "{padding: 10em;}",
+        },
+        {
+          'query': "{p10re$$$$}",
+          'result': "{padding: 10rem;}",
+        },
+        {
+          'query': "{p10rem$$$$}",
+          'result': "{padding: 10rem;}",
         },
       ],
     },
@@ -920,11 +957,11 @@ finish
         },
         {
           'query': "{bg+$$$$}",
-          'result': "{background: #FFF url($$$$) 0 0 no-repeat;}",
+          'result': "{background: $$$$#fff url() 0 0 no-repeat;}",
         },
         {
           'query': "{bg+!$$$$}",
-          'result': "{background: #FFF url($$$$) 0 0 no-repeat !important;}",
+          'result': "{background: $$$$#fff url() 0 0 no-repeat !important;}",
         },
         {
           'query': "{m$$$$}",
@@ -976,7 +1013,7 @@ finish
         },
         {
           'query': "{(bg+)+c$$$$}",
-          'result': "{background: #FFF url($$$$) 0 0 no-repeat;\ncolor: #000;}",
+          'result': "{background: $$$$#fff url() 0 0 no-repeat;\ncolor: #000;}",
         },
       ],
     },

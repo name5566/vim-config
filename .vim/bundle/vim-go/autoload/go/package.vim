@@ -31,24 +31,22 @@ endif
 function! go#package#Paths()
     let dirs = []
 
-    if executable('go')
-        let goroot = substitute(system('go env GOROOT'), '\n', '', 'g')
-        if v:shell_error
-            echomsg '''go env GOROOT'' failed'
+    if !exists("s:goroot")
+        if executable('go')
+            let s:goroot = substitute(go#util#System('go env GOROOT'), '\n', '', 'g')
+            if go#util#ShellError() != 0
+                echomsg '''go env GOROOT'' failed'
+            endif
+        else
+            let s:goroot = $GOROOT
         endif
-    else
-        let goroot = $GOROOT
     endif
 
-    if len(goroot) != 0 && isdirectory(goroot)
-        let dirs += [goroot]
+    if len(s:goroot) != 0 && isdirectory(s:goroot)
+        let dirs += [s:goroot]
     endif
 
-    let pathsep = ':'
-    if s:goos == 'windows'
-        let pathsep = ';'
-    endif
-    let workspaces = split($GOPATH, pathsep)
+    let workspaces = split(go#path#Detect(), go#util#PathListSep())
     if workspaces != []
         let dirs += workspaces
     endif
@@ -70,7 +68,8 @@ function! go#package#ImportPath(arg)
         return -1
     endif
 
-    return substitute(path, workspace . '/src/', '', '')
+    let srcdir = substitute(workspace . '/src/', '//', '/', '')
+    return substitute(path, srcdir, '', '')
 endfunction
 
 function! go#package#FromPath(arg)
@@ -96,8 +95,8 @@ function! go#package#FromPath(arg)
 endfunction
 
 function! go#package#CompleteMembers(package, member)
-    silent! let content = system('godoc ' . a:package)
-    if v:shell_error || !len(content)
+    silent! let content = go#util#System('godoc ' . a:package)
+    if go#util#ShellError() || !len(content)
         return []
     endif
     let lines = filter(split(content, "\n"),"v:val !~ '^\\s\\+$'")
@@ -116,7 +115,11 @@ endfunction
 
 function! go#package#Complete(ArgLead, CmdLine, CursorPos)
     let words = split(a:CmdLine, '\s\+', 1)
-    if len(words) > 2 && words[0] != "GoImportAs"
+
+    " do not complete package members for these commands
+    let neglect_commands = ["GoImportAs", "GoGuruScope"]
+
+    if len(words) > 2 && index(neglect_commands, words[0]) == -1
         " Complete package members
         return go#package#CompleteMembers(words[1], words[2])
     endif
@@ -142,6 +145,11 @@ function! go#package#Complete(ArgLead, CmdLine, CursorPos)
                 endif
                 let i = substitute(substitute(i[len(r)+1:], '[\\]', '/', 'g'),
                                   \ '\.a$', '', 'g')
+
+                " without this the result can have duplicates in form of
+                " 'encoding/json' and '/encoding/json/'
+                let i = go#util#StripPathSep(i)
+
                 let ret[i] = i
             endfor
         endfor
