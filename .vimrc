@@ -140,24 +140,16 @@ nnoremap <silent> <leader>f :IH<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => FuzzyFinder
+" => ctrlp
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:fuf_previewHeight=0
-nnoremap <silent> <F4> :FufFileWithCurrentBufferDir<CR>
-nnoremap <silent> <F5> :FufFile<CR>
+let g:ctrlp_max_files=0
+let g:ctrlp_working_path_mode=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerdcommenter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <A-/> ,c<space>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Buffer Explorer
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
