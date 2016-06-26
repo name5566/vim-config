@@ -46,7 +46,7 @@
 
 ## 目录文件列表的支持（通过插件 [nerdtree](https://github.com/scrooloose/nerdtree) 实现）
 
-1. 命令 :NERDTree 用于打开 NERD Tree
+1. 命令 :NERDTree 用于打开 NERD Tree（或 `<leader>e`）
 2. 命令 :NERDTreeClose 用于关闭 NERD Tree
 3. 命令 :NERDFind 用于在 NERD Tree 中查找当前 Buffer 对应的文件
 
