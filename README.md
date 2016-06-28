@@ -30,6 +30,7 @@
 2. Ctrl + k 光标移到上边的 Buffer 中去
 3. Ctrl + h 光标移到左边的 Buffer 中去
 4. Ctrl + l 光标移到右边的 Buffer 中去
+5. `<leader>be` 用于打开一个 Buffer 列表（通过插件 [bufexplorer](https://github.com/jlanzarotta/bufexplorer) 实现）
 
 ## 命令行相关配置（例如，支持 Bash 风格的按键）
 
