@@ -179,7 +179,11 @@ let g:vbookmark_bookmarkSaveFile = $HOME . '/.vimbookmark'
 " => Mutable
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set font
-set gfn=Monaco:h13
+if has("macunix")
+	set gfn=Monaco:h13
+elseif has("win32")
+	set gfn=Consolas:h10
+endif
 
 " Smart mappings on the command line
 cno $w \<\><left><left>
