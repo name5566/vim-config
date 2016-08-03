@@ -104,8 +104,11 @@ if has("gui_running")
   set guioptions-=r
 endif
 
-" File encodings
+" Encodings
+set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
 
 " Switch buffers
 noremap <C-J> <C-W>j
